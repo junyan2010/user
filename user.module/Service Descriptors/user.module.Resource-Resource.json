@@ -1,0 +1,142 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Resource",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/resource" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-resource",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/detailRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a detailResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/detailResponse"
+            }
+          }
+        }
+      },
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-resource",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a listResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/listResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "empdetails" : {
+      "type" : "object",
+      "required" : [ "firstname", "phone", "id", "email", "lastname", "status" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "firstname" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "phone" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "emplist" : {
+      "type" : "object",
+      "required" : [ "user" ],
+      "properties" : {
+        "user" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/user",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "detailResponse" : {
+      "type" : "object",
+      "properties" : {
+        "empdetails" : {
+          "$ref" : "#/definitions/empdetails"
+        }
+      }
+    },
+    "emprequest" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "user" : {
+      "type" : "object",
+      "required" : [ "firstname", "id", "lastname" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "firstname" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        }
+      }
+    },
+    "detailRequest" : {
+      "type" : "object",
+      "properties" : {
+        "emprequest" : {
+          "$ref" : "#/definitions/emprequest"
+        }
+      }
+    },
+    "listResponse" : {
+      "type" : "object",
+      "properties" : {
+        "emplist" : {
+          "$ref" : "#/definitions/emplist"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_O2KroLisEeu-7frvONOv8w" name="user.module.JDBCConnectionResource" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_O3HG0LisEeu-7frvONOv8w" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_O3HG0bisEeu-7frvONOv8w">
+    <substitutionBindings xmi:id="_4Yao4LovEeugCd_YtyEHxg" template="username" propName="/Database/User"/>
+    <substitutionBindings xmi:id="_5U6tYLovEeugCd_YtyEHxg" template="password" propName="/Database/Password"/>
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_O3I8ALisEeu-7frvONOv8w">
+      <substitutionBindings xmi:id="_t-PJALovEeugCd_YtyEHxg" template="jdbcDriver" propName="/Database/Driver"/>
+      <substitutionBindings xmi:id="_2AIi4LovEeugCd_YtyEHxg" template="dbURL" propName="/Database/Url"/>
+    </connectionConfig>
+    <connectionProperties xmi:id="_sfAAULouEeugCd_YtyEHxg" key="jarFile" value="mysql"/>
+  </jndi:configuration>
+</jndi:namedResource>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:extns="http://www.example.org/schema/1621438202020" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Process" targetNamespace="http://www.example.org/wsdl/1621438201997">
+  <wsdl:import namespace="http://www.example.org/schema/1621438202020"/>
+  <wsdl:message name="listRequest">
+    <wsdl:part element="extns:listRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listResponse">
+    <wsdl:part element="extns:listResponse" name="parameters"/>
+  </wsdl:message>
+    <wsdl:message name="detailRequest">
+    <wsdl:part element="extns:detailRequest" name="parameters"/>
+  </wsdl:message>
+    <wsdl:message name="detailResponse">
+    <wsdl:part element="extns:detailResponse" name="parameters"/>
+  </wsdl:message>
+    <wsdl:portType name="Process">
+    <wsdl:operation name="list">
+      <wsdl:input message="tns:listRequest" name="listInput"/>
+      <wsdl:output message="tns:listResponse" name="listOutput"/>
+    </wsdl:operation>
+        <wsdl:operation name="detail">
+      <wsdl:input message="tns:detailRequest" name="detailInput"/>
+      <wsdl:output message="tns:detailResponse" name="detailOutput"/>
+    </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
