@@ -1,0 +1,43 @@
+{"records": [
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaLocation": "/user.module/Schemas/detailRequestSchema.xsd",
+        "xsdSchemaTargetNamespace": "http://www.example.org/user"
+    },
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaLocation": "/user.module/Schemas/detailResponseSchema.xsd",
+        "xsdSchemaTargetNamespace": "http://www.example.org/user"
+    },
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaLocation": "/user.module/Schemas/listResponseSchema.xsd",
+        "xsdSchemaTargetNamespace": "http://www.example.org/user"
+    },
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaLocation": "/user.module/Schemas/detailRequestSchema.xsd",
+        "xsdSchemaTargetNamespace": "http://www.example.org/user"
+    },
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaLocation": "/user.module/Schemas/detailResponseSchema.xsd",
+        "xsdSchemaTargetNamespace": "http://www.example.org/user"
+    },
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaLocation": "/user.module/Schemas/listResponseSchema.xsd",
+        "xsdSchemaTargetNamespace": "http://www.example.org/user"
+    },
+    {
+        "jsonSchemaLocation": "/user.module/Service Descriptors/user.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/schema/1621438202020"
+    }
+]}
