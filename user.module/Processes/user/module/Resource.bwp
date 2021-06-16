@@ -7,6 +7,7 @@
     xmlns:ns="http://xmlns.example.com/20210519162523PLT"
     xmlns:ns0="http://www.tibco.com/pe/EngineTypes"
     xmlns:ns1="http://www.example.org/wsdl/1621438201997"
+    xmlns:ns2="http://www.example.org/schema/1621438202020"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -157,6 +158,17 @@
                 </complexContent>
             </complexType>
             <element name="ActivityTimedOutException" type="tns:ActivityTimedOutExceptionType"/>
+            <complexType name="DuplicateKeyExceptionType">
+                <complexContent>
+                    <extension base="tns:ActivityExceptionType">
+                        <sequence>
+                            <element name="duplicateKey" type="string"/>
+                            <element minOccurs="0" name="previousJobID" type="string"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <element name="DuplicateKeyException" type="tns:DuplicateKeyExceptionType"/>
         </schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20210519162523PLT"
@@ -709,7 +721,7 @@
                                     xsi:type="notation:Bounds" y="10"/>
                                     </children>
 
-                                    <children type="4002">
+                                    <children type="4002 bw.generalactivities.callprocess">
 
                                     <children type="4017">
 
@@ -759,8 +771,10 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.3"/>
 
                                     <layoutConstraint
-                                    x="79"
-                                    xsi:type="notation:Bounds" y="18"/>
+                                    height="40"
+                                    width="40"
+                                    x="93"
+                                    xsi:type="notation:Bounds" y="10"/>
                                     </children>
 
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -786,10 +800,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="108"
-                                    width="400"
-                                    x="2"
-                                    xsi:type="notation:Bounds" y="2"/>
+                                    height="99"
+                                    width="381" xsi:type="notation:Bounds"/>
                                     </children>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -944,17 +956,6 @@
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[12, -2, -165, 14]$[153, -14, -24, 2]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
             <children type="6002">
@@ -962,19 +963,8 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[25, -2, -138, 0]$[139, 0, -24, 2]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
@@ -984,14 +974,21 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@links/@children.0"/>
+            <bendpoints points="[25, -1, -127, 0]$[128, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
+    <tibex:NamespaceRegistry enabled="true">
+        <tibex:namespaceItem
+            namespace="http://www.example.org/schema/1621438202020" prefix="tns"/>
+        <tibex:namespaceItem
+            namespace="http://xmlns.example.com/20210519162523PLT" prefix="tns2"/>
+        <tibex:namespaceItem namespace="http://www.example.org/user1" prefix="ns"/>
+    </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/schema/1621438202020"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
-    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.org/wsdl/1621438201997"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://xmlns.example.com/Resource/parameters"/>
+    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.org/wsdl/1621438201997"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="resource"
             partnerLinkType="ns:partnerLinkType" sca-bpel:ignore="false" sca-bpel:service="resource"/>
@@ -1014,8 +1011,9 @@
         <bpws:variable messageType="ns1:detailRequest"
             name="detail-input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns1:detailResponse" name="detail" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns1:listRequest" name="list-input" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns1:listResponse" name="list" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:listRequest"
+            name="CallProcess-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:listResponse" name="CallProcess" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1035,15 +1033,10 @@
                     <bpws:scope name="scope1">
                         <bpws:flow name="flow1">
                             <bpws:links>
-                                <bpws:link name="OnMessageStartTodetail" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="detailTopostOut" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart"
-                                tibex:constructor="onMessageStart" tibex:xpdlId="ea6e0655-da37-42c8-9f27-5f50ad788fd0">
-                                <bpws:sources>
-                                    <bpws:source linkName="OnMessageStartTodetail"/>
-                                </bpws:sources>
-                            </bpws:empty>
+                                tibex:constructor="onMessageStart" tibex:xpdlId="ea6e0655-da37-42c8-9f27-5f50ad788fd0"/>
                             <bpws:empty name="OnMessageEnd"
                                 tibex:constructor="onMessageEnd" tibex:xpdlId="20276737-3646-42c9-bea0-d2d7a5e730b5"/>
                             <bpws:reply name="postOut" operation="post"
@@ -1051,10 +1044,19 @@
                                 portType="ns:resource"
                                 tibex:xpdlId="462fa350-5b99-4cf7-acd0-fda3ab07f7bc" variable="postOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20210519162523PLT" xmlns:tns1="http://www.example.org/schema/1621438202020" version="2.0"&gt;&lt;xsl:param name="detail"/&gt;&lt;xsl:template name="postOut-input" match="/"&gt;&lt;tns:postResponse&gt;&lt;empdetails&gt;&lt;xsl:copy-of select="$detail/parameters/tns1:detailResponse"/&gt;&lt;/empdetails&gt;&lt;/tns:postResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20210519162523PLT" xmlns:tns="http://www.example.org/schema/1621438202020" version="2.0"&gt;
+    &lt;xsl:param name="detail"/&gt;
+    &lt;xsl:template name="postOut-input" match="/"&gt;
+        &lt;tns2:postResponse&gt;
+            &lt;empdetails&gt;
+                &lt;xsl:copy-of select="$detail/parameters/tns:detailResponse"/&gt;
+            &lt;/empdetails&gt;
+        &lt;/tns2:postResponse&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20210519162523PLT&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;detail.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;xsl:copy-of select=&quot;$detail.parameters&quot;/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20210519162523PLT&quot; xmlns:tns=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;detail.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;xsl:copy-of select=&quot;$detail.parameters&quot;/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="detailTopostOut"/>
@@ -1066,14 +1068,20 @@
                                 partnerLink="Process"
                                 portType="ns1:Process" tibex:xpdlId="078bb3b0-656b-4d79-9a45-2082d3604a72">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns1="http://www.example.org/schema/1621438202020" version="2.0"&gt;&lt;xsl:param name="post"/&gt;&lt;xsl:template name="detail-input" match="/"&gt;&lt;tns:detailRequest&gt;&lt;parameters&gt;&lt;xsl:copy-of select="$post/emprequest/tns1:detailRequest"/&gt;&lt;/parameters&gt;&lt;/tns:detailRequest&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns3="http://www.example.org/wsdl/1621438201997" xmlns:tns="http://www.example.org/schema/1621438202020" version="2.0"&gt;
+    &lt;xsl:param name="post"/&gt;
+    &lt;xsl:template name="detail-input" match="/"&gt;
+        &lt;tns3:detailRequest&gt;
+            &lt;parameters&gt;
+                &lt;xsl:copy-of select="$post/emprequest/tns:detailRequest"/&gt;
+            &lt;/parameters&gt;
+        &lt;/tns3:detailRequest&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;post.emprequest&quot;/>&#xa;    &lt;xsl:template name=&quot;detail-input&quot; match=&quot;/&quot;>&#xa;        &lt;xsl:copy-of select=&quot;$post.emprequest&quot;/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;post.emprequest&quot;/>&#xa;    &lt;xsl:template name=&quot;detail-input&quot; match=&quot;/&quot;>&#xa;        &lt;xsl:copy-of select=&quot;$post.emprequest&quot;/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
-                                <bpws:targets>
-                                    <bpws:target linkName="OnMessageStartTodetail"/>
-                                </bpws:targets>
                                 <bpws:sources>
                                     <bpws:source linkName="detailTopostOut"/>
                                 </bpws:sources>
@@ -1087,15 +1095,10 @@
                     <bpws:scope name="scope2">
                         <bpws:flow name="flow2">
                             <bpws:links>
-                                <bpws:link name="OnMessageStart1Tolist" tibex:linkType="SUCCESS"/>
-                                <bpws:link name="listTogetOut" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="CallProcessTogetOut" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart1"
-                                tibex:constructor="onMessageStart" tibex:xpdlId="e00ccd52-f43a-44af-b510-9c6a69871f7d">
-                                <bpws:sources>
-                                    <bpws:source linkName="OnMessageStart1Tolist"/>
-                                </bpws:sources>
-                            </bpws:empty>
+                                tibex:constructor="onMessageStart" tibex:xpdlId="e00ccd52-f43a-44af-b510-9c6a69871f7d"/>
                             <bpws:empty name="OnMessageEnd1"
                                 tibex:constructor="onMessageEnd" tibex:xpdlId="cf0d5dc7-80e2-4d4d-9cb4-5f3dba9ce8f8"/>
                             <bpws:reply name="getOut" operation="get"
@@ -1103,34 +1106,34 @@
                                 portType="ns:resource"
                                 tibex:xpdlId="937370ab-fe00-47d9-9990-8c1b1be718b3" variable="getOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20210519162523PLT" xmlns:tns1="http://www.example.org/schema/1621438202020" version="2.0"&gt;&lt;xsl:param name="list"/&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns:getResponse&gt;&lt;emplist&gt;&lt;xsl:copy-of select="$list/parameters/tns1:listResponse"/&gt;&lt;/emplist&gt;&lt;/tns:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20210519162523PLT" xmlns:tns="http://www.example.org/schema/1621438202020" xmlns:ns="http://www.example.org/user1" version="2.0"&gt;&lt;xsl:param name="CallProcess"/&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns2:getResponse&gt;&lt;emplist&gt;&lt;tns:listResponse&gt;&lt;xsl:copy-of select="$CallProcess/ns:emplist"/&gt;&lt;/tns:listResponse&gt;&lt;/emplist&gt;&lt;/tns2:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20210519162523PLT&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;list.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;xsl:copy-of select=&quot;$list.parameters&quot;/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20210519162523PLT&quot; xmlns:tns=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:ns=&quot;http://www.example.org/user1&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;CallProcess&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:listResponse>&#xa;            &lt;xsl:copy-of select=&quot;$CallProcess/ns:emplist&quot;/>&#xa;        &lt;/tns:listResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
-                                    <bpws:target linkName="listTogetOut"/>
+                                    <bpws:target linkName="CallProcessTogetOut"/>
                                 </bpws:targets>
                                 <bpws:correlations/>
                             </bpws:reply>
-                            <bpws:invoke inputVariable="list-input"
-                                name="list" operation="list"
-                                outputVariable="list"
-                                partnerLink="Process"
-                                portType="ns1:Process" tibex:xpdlId="dec4589e-2bd2-44fb-8562-55155c3a530f">
-                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns1="http://www.example.org/schema/1621438202020" version="2.0"&gt;&lt;xsl:template name="list-input" match="/"&gt;&lt;tns:listRequest&gt;&lt;parameters&gt;&lt;tns1:listRequest&gt;&lt;primitive&gt;&lt;xsl:value-of select="''"/&gt;&lt;/primitive&gt;&lt;/tns1:listRequest&gt;&lt;/parameters&gt;&lt;/tns:listRequest&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
-                                <tibex:inputBindings>
-                                    <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;list-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:listRequest>&#xa;            &lt;primitive>&#xa;                &lt;xsl:value-of select=&quot;''&quot;/>&#xa;            &lt;/primitive>&#xa;        &lt;/tns1:listRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                                </tibex:inputBindings>
-                                <bpws:targets>
-                                    <bpws:target linkName="OnMessageStart1Tolist"/>
-                                </bpws:targets>
-                                <bpws:sources>
-                                    <bpws:source linkName="listTogetOut"/>
-                                </bpws:sources>
-                            </bpws:invoke>
+                            <bpws:extensionActivity>
+                                <tibex:extActivity
+                                    inputVariable="CallProcess-input"
+                                    name="CallProcess"
+                                    outputVariable="CallProcess"
+                                    tibex:xpdlId="58218ba4-e55b-4651-b807-9eeb90523d25"
+                                    type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:sources>
+                                    <bpws:source linkName="CallProcessTogetOut"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding coercion=""
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/schema/1621438202020&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;CallProcess-input&quot; match=&quot;/&quot;>&lt;tns:listRequest>&lt;primitive>&lt;xsl:value-of select=&quot;'1'&quot;/>&lt;/primitive>&lt;/tns:listRequest>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:CallProcess
+                                    subProcessName="user.module.listSubProcess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                                </tibex:extActivity>
+                            </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>
                 </bpws:onMessage>
