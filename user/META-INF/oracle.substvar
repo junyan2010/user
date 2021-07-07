@@ -106,7 +106,7 @@
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
-			<isOverride>false</isOverride>
+			<isOverride>true</isOverride>
 			<useLookupValue>false</useLookupValue>
 			<lookupValue>oracle.jdbc.OracleDriver</lookupValue>
 		</globalVariable>
@@ -116,8 +116,9 @@
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
-			<isOverride>false</isOverride>
+			<isOverride>true</isOverride>
 			<useLookupValue>false</useLookupValue>
+			<lookupValue>jdbc:oracle:thin:@localhost:1521/xepdb1</lookupValue>
 		</globalVariable>
 	</globalVariables>
 </repository>

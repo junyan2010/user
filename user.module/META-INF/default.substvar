@@ -84,7 +84,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>/Database/Driver</name>
-			<value>oracle.jdbc.OracleDriver</value>
+			<value>com.mysql.jdbc.Driver</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -111,7 +111,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>/Database/Url</name>
-			<value>jdbc:oracle:thin:@localhost:1521/xepdb1</value>
+			<value>jdbc:mysql://localhost:3306/empuser</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
