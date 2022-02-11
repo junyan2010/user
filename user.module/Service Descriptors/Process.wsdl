@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:extns="http://www.example.org/schema/1621438202020" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Process" targetNamespace="http://www.example.org/wsdl/1621438201997">
+<wsdl:definitions xmlns:extns="http://www.example.org/schema/1621438202020" xmlns:extns1="http://www.example.org/schema/1644605546848" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Process" targetNamespace="http://www.example.org/wsdl/1621438201997">
   <wsdl:import namespace="http://www.example.org/schema/1621438202020"/>
-  <wsdl:message name="listRequest">
+    <wsdl:import location="../Schemas/Process1Schema.xsd" namespace="http://www.example.org/schema/1644605546848"/>
+    <wsdl:message name="listRequest">
     <wsdl:part element="extns:listRequest" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="listResponse">
@@ -13,6 +14,12 @@
     <wsdl:message name="detailResponse">
     <wsdl:part element="extns:detailResponse" name="parameters"/>
   </wsdl:message>
+    <wsdl:message name="operationRequest">
+    <wsdl:part element="extns1:operationRequest" name="parameters"/>
+  </wsdl:message>
+    <wsdl:message name="operationResponse">
+    <wsdl:part element="extns1:operationResponse" name="parameters"/>
+  </wsdl:message>
     <wsdl:portType name="Process">
     <wsdl:operation name="list">
       <wsdl:input message="tns:listRequest" name="listInput"/>
@@ -23,4 +30,10 @@
       <wsdl:output message="tns:detailResponse" name="detailOutput"/>
     </wsdl:operation>
     </wsdl:portType>
+    <wsdl:portType name="Process1">
+    <wsdl:operation name="operation">
+      <wsdl:input message="tns:operationRequest" name="operationInput"/>
+      <wsdl:output message="tns:operationResponse" name="operationOutput"/>
+    </wsdl:operation>
+  </wsdl:portType>
 </wsdl:definitions>

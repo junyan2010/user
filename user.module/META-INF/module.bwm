@@ -63,7 +63,7 @@
   <sca:property xmi:id="_l9-G0LovEeugCd_YtyEHxg" name="/Database/Password" type="tibprop:password" scaext:simpleValue="#!TWueR1AVq+Df61/dJjF7Og==" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_xYfpYLovEeugCd_YtyEHxg" name="/Database/Url" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_VuwWcLjgEeuL2OtEATDNMg" name="ComponentResource" compositeext:version="1.0.0.qualifier">
-    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_VuwWcbjgEeuL2OtEATDNMg" processName="user.module.Resource"/>
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_VuwWcbjgEeuL2OtEATDNMg" processName="user.module.Resource" autoStart="false"/>
     <sca:service xmi:id="_VuzZwLjgEeuL2OtEATDNMg" name="resource">
       <sca:interface.wsdl xmi:id="_Vu0A0LjgEeuL2OtEATDNMg" interface="http://xmlns.example.com/20210519162523PLT#wsdl.interface(resource)" scaext:wsdlLocation="../Processes/user/module/Resource.bwp"/>
     </sca:service>
@@ -73,5 +73,11 @@
     <sca:service xmi:id="_ROpYML2JEeuufNV2IwdFUg" name="Process">
       <sca:interface.wsdl xmi:id="_ROqmUL2JEeuufNV2IwdFUg" interface="http://www.example.org/wsdl/1621438201997#wsdl.interface(Process)" scaext:wsdlLocation="../Service%20Descriptors/Process.wsdl"/>
     </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_dBz4oItrEeyUINPAZVzeUg" name="ComponentProcess1" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_dBz4oYtrEeyUINPAZVzeUg" processName="user.module.Process1"/>
+  </sca:component>
+  <sca:component xmi:id="_kOj2YItvEeyg5Os0rnHb_w" name="ComponentProcess2" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kOj2YYtvEeyg5Os0rnHb_w" processName="user.module.Process2"/>
   </sca:component>
 </sca:composite>
