@@ -93,7 +93,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>/Database/User</name>
-			<value>EMPUSER</value>
+			<value>CUSTOMUSER</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -102,7 +102,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>/Database/Password</name>
-			<value>#!S4LjWBfwfuGpjGNMwxP5gV1jtSj+Ex2o</value>
+			<value>#!SxA2JOH3XVdZLEcelmhGf20ELjRy/2WZCK2mYiRPrm8=</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>Password</type>

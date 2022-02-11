@@ -201,19 +201,15 @@
                             <complexType>
                                 <sequence>
                                     <element maxOccurs="1" minOccurs="1"
-                                    name="EMPLOYEE_ID" type="decimal"/>
+                                    name="CUSTOMER_ID" type="integer"/>
+                                    <element maxOccurs="1" minOccurs="1"
+                                    name="CUSTOMER_NO" type="string"/>
                                     <element maxOccurs="1" minOccurs="0"
                                     name="FIRST_NAME"
                                     nillable="false" type="string"/>
-                                    <element maxOccurs="1" minOccurs="1"
-                                    name="LAST_NAME" type="string"/>
-                                    <element maxOccurs="1" minOccurs="1"
-                                    name="EMAIL" type="string"/>
                                     <element maxOccurs="1" minOccurs="0"
-                                    name="PHONE_NUMBER"
+                                    name="LAST_NAME"
                                     nillable="false" type="string"/>
-                                    <element maxOccurs="1" minOccurs="0"
-                                    name="STATUS" nillable="false" type="string"/>
                                 </sequence>
                             </complexType>
                         </element>
@@ -249,19 +245,15 @@
                             <complexType>
                                 <sequence>
                                     <element maxOccurs="1" minOccurs="1"
-                                    name="EMPLOYEE_ID" type="decimal"/>
+                                    name="CUSTOMER_ID" type="integer"/>
+                                    <element maxOccurs="1" minOccurs="1"
+                                    name="CUSTOMER_NO" type="string"/>
                                     <element maxOccurs="1" minOccurs="0"
                                     name="FIRST_NAME"
                                     nillable="false" type="string"/>
-                                    <element maxOccurs="1" minOccurs="1"
-                                    name="LAST_NAME" type="string"/>
-                                    <element maxOccurs="1" minOccurs="1"
-                                    name="EMAIL" type="string"/>
                                     <element maxOccurs="1" minOccurs="0"
-                                    name="PHONE_NUMBER"
+                                    name="LAST_NAME"
                                     nillable="false" type="string"/>
-                                    <element maxOccurs="1" minOccurs="0"
-                                    name="STATUS" nillable="false" type="string"/>
                                 </sequence>
                             </complexType>
                         </element>
@@ -638,7 +630,10 @@
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
                                     <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <styles
+                                    restoreHeight="139"
+                                    restoreWidth="486"
+                                    restoreX="2" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
                                     <layoutConstraint
                                     height="139"
@@ -927,7 +922,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1"/>
                                     <layoutConstraint
-                                    height="145"
+                                    height="146"
                                     width="486"
                                     x="2"
                                     xsi:type="notation:Bounds" y="138"/>
@@ -1033,6 +1028,16 @@
             <bendpoints points="[25, -5, -111, 0]$[112, 0, -24, 5]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
+    <tibex:NamespaceRegistry enabled="true">
+        <tibex:namespaceItem
+            namespace="http://www.example.org/schema/1621438202020" prefix="tns1"/>
+        <tibex:namespaceItem namespace="http://www.example.org/user1" prefix="ns1"/>
+        <tibex:namespaceItem
+            namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+        <tibex:namespaceItem
+            namespace="http://www.example.org/wsdl/1621438201997" prefix="tns"/>
+        <tibex:namespaceItem namespace="http://www.example.org/user3" prefix="ns2"/>
+    </tibex:NamespaceRegistry>
     <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.org/wsdl/1621438201997"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="Process"
@@ -1097,10 +1102,10 @@
                                 portType="ns1:Process"
                                 tibex:xpdlId="09a7155d-4368-4d8c-b6c9-dc04c2837ba5" variable="listOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns1="http://www.example.org/schema/1621438202020" xmlns:ns="http://www.example.org/user" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.example.org/user1" version="2.0"&gt;&lt;xsl:param name="JDBCQuery"/&gt;&lt;xsl:template name="listOut-input" match="/"&gt;&lt;tns:listResponse&gt;&lt;parameters&gt;&lt;tns1:listResponse&gt;&lt;ns1:emplist&gt;&lt;xsl:for-each select="$JDBCQuery/Record"&gt;&lt;ns1:user&gt;&lt;ns1:id&gt;&lt;xsl:value-of select="xsd:integer(EMPLOYEE_ID)"/&gt;&lt;/ns1:id&gt;&lt;ns1:firstname&gt;&lt;xsl:value-of select="FIRST_NAME"/&gt;&lt;/ns1:firstname&gt;&lt;ns1:lastname&gt;&lt;xsl:value-of select="LAST_NAME"/&gt;&lt;/ns1:lastname&gt;&lt;/ns1:user&gt;&lt;/xsl:for-each&gt;&lt;/ns1:emplist&gt;&lt;/tns1:listResponse&gt;&lt;/parameters&gt;&lt;/tns:listResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns1="http://www.example.org/schema/1621438202020" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.example.org/user1" version="2.0"&gt;&lt;xsl:param name="JDBCQuery"/&gt;&lt;xsl:template name="listOut-input" match="/"&gt;&lt;tns:listResponse&gt;&lt;parameters&gt;&lt;tns1:listResponse&gt;&lt;ns1:emplist&gt;&lt;xsl:for-each select="$JDBCQuery/Record"&gt;&lt;ns1:user&gt;&lt;ns1:id&gt;&lt;xsl:value-of select="CUSTOMER_ID"/&gt;&lt;/ns1:id&gt;&lt;ns1:firstname&gt;&lt;xsl:value-of select="FIRST_NAME"/&gt;&lt;/ns1:firstname&gt;&lt;ns1:lastname&gt;&lt;xsl:value-of select="LAST_NAME"/&gt;&lt;/ns1:lastname&gt;&lt;/ns1:user&gt;&lt;/xsl:for-each&gt;&lt;/ns1:emplist&gt;&lt;/tns1:listResponse&gt;&lt;/parameters&gt;&lt;/tns:listResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:ns=&quot;http://www.example.org/user&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns1=&quot;http://www.example.org/user1&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;JDBCQuery&quot;/>&#xa;    &lt;xsl:template name=&quot;listOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:listResponse>&#xa;            &lt;ns1:emplist>&#xa;                &lt;xsl:for-each select=&quot;$JDBCQuery/Record&quot;>&#xa;                    &lt;ns1:user>&#xa;                        &lt;ns1:id>&#xa;                            &lt;xsl:value-of select=&quot;xsd:integer(EMPLOYEE_ID)&quot;/>&#xa;                        &lt;/ns1:id>&#xa;                        &lt;ns1:firstname>&#xa;                            &lt;xsl:value-of select=&quot;FIRST_NAME&quot;/>&#xa;                        &lt;/ns1:firstname>&#xa;                        &lt;ns1:lastname>&#xa;                            &lt;xsl:value-of select=&quot;LAST_NAME&quot;/>&#xa;                        &lt;/ns1:lastname>&#xa;                    &lt;/ns1:user>&#xa;                &lt;/xsl:for-each>&#xa;            &lt;/ns1:emplist>&#xa;        &lt;/tns1:listResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns1=&quot;http://www.example.org/user1&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;JDBCQuery&quot;/>&#xa;    &lt;xsl:template name=&quot;listOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:listResponse>&#xa;            &lt;ns1:emplist>&#xa;                &lt;xsl:for-each select=&quot;$JDBCQuery/Record&quot;>&#xa;                    &lt;ns1:user>&#xa;                        &lt;ns1:id>&#xa;                            &lt;xsl:value-of select=&quot;CUSTOMER_ID&quot;/>&#xa;                        &lt;/ns1:id>&#xa;                        &lt;ns1:firstname>&#xa;                            &lt;xsl:value-of select=&quot;FIRST_NAME&quot;/>&#xa;                        &lt;/ns1:firstname>&#xa;                        &lt;ns1:lastname>&#xa;                            &lt;xsl:value-of select=&quot;LAST_NAME&quot;/>&#xa;                        &lt;/ns1:lastname>&#xa;                    &lt;/ns1:user>&#xa;                &lt;/xsl:for-each>&#xa;            &lt;/ns1:emplist>&#xa;        &lt;/tns1:listResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="JDBCQueryTolistOut"/>
@@ -1121,7 +1126,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?> &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+910edd32-65eb-4570-b5cb-7f122ab8f59c+input&quot; version=&quot;2.0&quot;> &lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;> &lt;tns:jdbcQueryActivityInput/> &lt;/xsl:template> &lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+910edd32-65eb-4570-b5cb-7f122ab8f59c+input&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:jdbcQueryActivityInput/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1135,29 +1140,26 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
                                     <value maxRows="100"
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT *&#xa;  FROM employees&#xa;"
+                                    sqlStatement="SELECT *&#xa;  FROM customer&#xa;"
                                     timeout="10" xsi:type="jdbcPalette:JDBCQueryActivity">
                                     <columnMetadata
-                                    columnName="EMPLOYEE_ID"
-                                    dataType="3" typeName="DECIMAL"/>
+                                    columnIndex="1"
+                                    columnName="CUSTOMER_ID"
+                                    dataType="-5" typeName="NUMBER"/>
                                     <columnMetadata
+                                    columnIndex="2"
+                                    columnName="CUSTOMER_NO"
+                                    dataType="12" typeName="VARCHAR2"/>
+                                    <columnMetadata
+                                    columnIndex="3"
                                     columnName="FIRST_NAME"
                                     dataType="12"
-                                    status="OptionalElement" typeName="VARCHAR"/>
+                                    status="OptionalElement" typeName="VARCHAR2"/>
                                     <columnMetadata
+                                    columnIndex="4"
                                     columnName="LAST_NAME"
-                                    dataType="12" typeName="VARCHAR"/>
-                                    <columnMetadata
-                                    columnName="EMAIL"
-                                    dataType="12" typeName="VARCHAR"/>
-                                    <columnMetadata
-                                    columnName="PHONE_NUMBER"
                                     dataType="12"
-                                    status="OptionalElement" typeName="VARCHAR"/>
-                                    <columnMetadata
-                                    columnName="STATUS"
-                                    dataType="12"
-                                    status="OptionalElement" typeName="VARCHAR"/>
+                                    status="OptionalElement" typeName="VARCHAR2"/>
                                     </value>
                                     </properties>
                                     </activityConfig>
@@ -1191,10 +1193,10 @@
                                 portType="ns1:Process"
                                 tibex:xpdlId="2aa0b49c-05de-42f3-8898-5e57f50a00b1" variable="detailOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns1="http://www.example.org/schema/1621438202020" xmlns:ns="http://www.example.org/user" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.example.org/user3" version="2.0"&gt;&lt;xsl:param name="JDBCQuery1"/&gt;&lt;xsl:template name="detailOut-input" match="/"&gt;&lt;tns:detailResponse&gt;&lt;parameters&gt;&lt;tns1:detailResponse&gt;&lt;xsl:for-each select="$JDBCQuery1/Record"&gt;&lt;ns1:empdetails&gt;&lt;ns1:id&gt;&lt;xsl:value-of select="xsd:integer(EMPLOYEE_ID)"/&gt;&lt;/ns1:id&gt;&lt;ns1:firstname&gt;&lt;xsl:value-of select="FIRST_NAME"/&gt;&lt;/ns1:firstname&gt;&lt;ns1:lastname&gt;&lt;xsl:value-of select="LAST_NAME"/&gt;&lt;/ns1:lastname&gt;&lt;ns1:email&gt;&lt;xsl:value-of select="EMAIL"/&gt;&lt;/ns1:email&gt;&lt;ns1:phone&gt;&lt;xsl:value-of select="PHONE_NUMBER"/&gt;&lt;/ns1:phone&gt;&lt;ns1:status&gt;&lt;xsl:value-of select="STATUS"/&gt;&lt;/ns1:status&gt;&lt;/ns1:empdetails&gt;&lt;/xsl:for-each&gt;&lt;/tns1:detailResponse&gt;&lt;/parameters&gt;&lt;/tns:detailResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns1="http://www.example.org/schema/1621438202020" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.example.org/user3" version="2.0"&gt;&lt;xsl:param name="JDBCQuery1"/&gt;&lt;xsl:template name="detailOut-input" match="/"&gt;&lt;tns:detailResponse&gt;&lt;parameters&gt;&lt;tns1:detailResponse&gt;&lt;xsl:for-each select="$JDBCQuery1/Record"&gt;&lt;ns2:empdetails&gt;&lt;ns2:id&gt;&lt;xsl:value-of select="CUSTOMER_ID"/&gt;&lt;/ns2:id&gt;&lt;ns2:firstname&gt;&lt;xsl:value-of select="FIRST_NAME"/&gt;&lt;/ns2:firstname&gt;&lt;ns2:lastname&gt;&lt;xsl:value-of select="LAST_NAME"/&gt;&lt;/ns2:lastname&gt;&lt;ns2:email&gt;&lt;xsl:value-of select="''"/&gt;&lt;/ns2:email&gt;&lt;ns2:phone&gt;&lt;xsl:value-of select="''"/&gt;&lt;/ns2:phone&gt;&lt;ns2:status&gt;&lt;xsl:value-of select="CUSTOMER_NO"/&gt;&lt;/ns2:status&gt;&lt;/ns2:empdetails&gt;&lt;/xsl:for-each&gt;&lt;/tns1:detailResponse&gt;&lt;/parameters&gt;&lt;/tns:detailResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:ns=&quot;http://www.example.org/user&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns1=&quot;http://www.example.org/user3&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;JDBCQuery1&quot;/>&#xa;    &lt;xsl:template name=&quot;detailOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:detailResponse>&#xa;            &lt;xsl:for-each select=&quot;$JDBCQuery1/Record&quot;>&#xa;                &lt;ns1:empdetails>&#xa;                    &lt;ns1:id>&#xa;                        &lt;xsl:value-of select=&quot;xsd:integer(EMPLOYEE_ID)&quot;/>&#xa;                    &lt;/ns1:id>&#xa;                    &lt;ns1:firstname>&#xa;                        &lt;xsl:value-of select=&quot;FIRST_NAME&quot;/>&#xa;                    &lt;/ns1:firstname>&#xa;                    &lt;ns1:lastname>&#xa;                        &lt;xsl:value-of select=&quot;LAST_NAME&quot;/>&#xa;                    &lt;/ns1:lastname>&#xa;                    &lt;ns1:email>&#xa;                        &lt;xsl:value-of select=&quot;EMAIL&quot;/>&#xa;                    &lt;/ns1:email>&#xa;                    &lt;ns1:phone>&#xa;                        &lt;xsl:value-of select=&quot;PHONE_NUMBER&quot;/>&#xa;                    &lt;/ns1:phone>&#xa;                    &lt;ns1:status>&#xa;                        &lt;xsl:value-of select=&quot;STATUS&quot;/>&#xa;                    &lt;/ns1:status>&#xa;                &lt;/ns1:empdetails>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns1:detailResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/wsdl/1621438201997&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns2=&quot;http://www.example.org/user3&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;JDBCQuery1&quot;/>&#xa;    &lt;xsl:template name=&quot;detailOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:detailResponse>&#xa;            &lt;xsl:for-each select=&quot;$JDBCQuery1/Record&quot;>&#xa;                &lt;ns2:empdetails>&#xa;                    &lt;ns2:id>&#xa;                        &lt;xsl:value-of select=&quot;CUSTOMER_ID&quot;/>&#xa;                    &lt;/ns2:id>&#xa;                    &lt;ns2:firstname>&#xa;                        &lt;xsl:value-of select=&quot;FIRST_NAME&quot;/>&#xa;                    &lt;/ns2:firstname>&#xa;                    &lt;ns2:lastname>&#xa;                        &lt;xsl:value-of select=&quot;LAST_NAME&quot;/>&#xa;                    &lt;/ns2:lastname>&#xa;                    &lt;ns2:email>&#xa;                        &lt;xsl:value-of select=&quot;''&quot;/>&#xa;                    &lt;/ns2:email>&#xa;                    &lt;ns2:phone>&#xa;                        &lt;xsl:value-of select=&quot;''&quot;/>&#xa;                    &lt;/ns2:phone>&#xa;                    &lt;ns2:status>&#xa;                        &lt;xsl:value-of select=&quot;CUSTOMER_NO&quot;/>&#xa;                    &lt;/ns2:status>&#xa;                &lt;/ns2:empdetails>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns1:detailResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="JDBCQuery1TodetailOut"/>
@@ -1202,7 +1204,7 @@
                             </bpws:reply>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+440f81ff-78d6-4c29-83be-591ef5209c4d+input&quot; xmlns:ns=&quot;http://www.example.org/user&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ns1=&quot;http://www.example.org/user2&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;detail&quot;/>&lt;xsl:template name=&quot;JDBCQuery1-input&quot; match=&quot;/&quot;>&lt;tns:jdbcQueryActivityInput>&lt;employee_id>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($detail/parameters/tns1:detailRequest/ns1:emprequest/ns1:id)&quot;>&lt;xsl:value-of select=&quot;$detail/parameters/tns1:detailRequest/ns1:emprequest/ns1:id&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/employee_id>&lt;/tns:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+440f81ff-78d6-4c29-83be-591ef5209c4d+input&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ns3=&quot;http://www.example.org/user2&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;detail&quot;/>&#xa;    &lt;xsl:template name=&quot;JDBCQuery1-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:jdbcQueryActivityInput>&#xa;            &lt;employee_id>&#xa;                &lt;xsl:choose>&#xa;                    &lt;xsl:when test=&quot;exists($detail/parameters/tns1:detailRequest/ns3:emprequest/ns3:id)&quot;>&#xa;                        &lt;xsl:value-of select=&quot;$detail/parameters/tns1:detailRequest/ns3:emprequest/ns3:id&quot;/>&#xa;                    &lt;/xsl:when>&#xa;                    &lt;xsl:otherwise>&#xa;                        &lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&#xa;                    &lt;/xsl:otherwise>&#xa;                &lt;/xsl:choose>&#xa;            &lt;/employee_id>&#xa;        &lt;/tns2:jdbcQueryActivityInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
                                     inputVariable="JDBCQuery1-input"
                                     name="JDBCQuery1"
@@ -1216,7 +1218,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+440f81ff-78d6-4c29-83be-591ef5209c4d+input&quot; xmlns:ns=&quot;http://www.example.org/user&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ns1=&quot;http://www.example.org/user2&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;detail.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;JDBCQuery1-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:jdbcQueryActivityInput>&#xa;            &lt;employee_id>&#xa;                &lt;xsl:choose>&#xa;                    &lt;xsl:when test=&quot;exists($detail.parameters/ns1:emprequest/ns1:id)&quot;>&#xa;                        &lt;xsl:value-of select=&quot;$detail.parameters/ns1:emprequest/ns1:id&quot;/>&#xa;                    &lt;/xsl:when>&#xa;                    &lt;xsl:otherwise>&#xa;                        &lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&#xa;                    &lt;/xsl:otherwise>&#xa;                &lt;/xsl:choose>&#xa;            &lt;/employee_id>&#xa;        &lt;/tns:jdbcQueryActivityInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+440f81ff-78d6-4c29-83be-591ef5209c4d+input&quot; xmlns:tns1=&quot;http://www.example.org/schema/1621438202020&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ns3=&quot;http://www.example.org/user2&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;detail.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;JDBCQuery1-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:jdbcQueryActivityInput>&#xa;            &lt;employee_id>&#xa;                &lt;xsl:choose>&#xa;                    &lt;xsl:when test=&quot;exists($detail.parameters/ns3:emprequest/ns3:id)&quot;>&#xa;                        &lt;xsl:value-of select=&quot;$detail.parameters/ns3:emprequest/ns3:id&quot;/>&#xa;                    &lt;/xsl:when>&#xa;                    &lt;xsl:otherwise>&#xa;                        &lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&#xa;                    &lt;/xsl:otherwise>&#xa;                &lt;/xsl:choose>&#xa;            &lt;/employee_id>&#xa;        &lt;/tns2:jdbcQueryActivityInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1230,33 +1232,30 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
                                     <value maxRows="100"
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT * FROM employees where employee_id = ?&#xa;"
+                                    sqlStatement="SELECT * FROM customer where customer_id = ?&#xa;"
                                     timeout="10" xsi:type="jdbcPalette:JDBCQueryActivity">
 
                                     <PreparedParameters
                                     DataType="3"
                                     DataTypeDisplayValue="DECIMAL" ParameterName="employee_id"/>
                                     <columnMetadata
-                                    columnName="EMPLOYEE_ID"
-                                    dataType="3" typeName="DECIMAL"/>
+                                    columnIndex="1"
+                                    columnName="CUSTOMER_ID"
+                                    dataType="-5" typeName="NUMBER"/>
                                     <columnMetadata
+                                    columnIndex="2"
+                                    columnName="CUSTOMER_NO"
+                                    dataType="12" typeName="VARCHAR2"/>
+                                    <columnMetadata
+                                    columnIndex="3"
                                     columnName="FIRST_NAME"
                                     dataType="12"
-                                    status="OptionalElement" typeName="VARCHAR"/>
+                                    status="OptionalElement" typeName="VARCHAR2"/>
                                     <columnMetadata
+                                    columnIndex="4"
                                     columnName="LAST_NAME"
-                                    dataType="12" typeName="VARCHAR"/>
-                                    <columnMetadata
-                                    columnName="EMAIL"
-                                    dataType="12" typeName="VARCHAR"/>
-                                    <columnMetadata
-                                    columnName="PHONE_NUMBER"
                                     dataType="12"
-                                    status="OptionalElement" typeName="VARCHAR"/>
-                                    <columnMetadata
-                                    columnName="STATUS"
-                                    dataType="12"
-                                    status="OptionalElement" typeName="VARCHAR"/>
+                                    status="OptionalElement" typeName="VARCHAR2"/>
                                     </value>
                                     </properties>
                                     </activityConfig>

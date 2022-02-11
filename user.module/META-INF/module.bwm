@@ -69,7 +69,7 @@
     </sca:service>
   </sca:component>
   <sca:component xmi:id="_ROlt0L2JEeuufNV2IwdFUg" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
-    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_ROlt0b2JEeuufNV2IwdFUg" processName="user.module.Process"/>
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_ROlt0b2JEeuufNV2IwdFUg" processName="user.module.Process" autoStart="false"/>
     <sca:service xmi:id="_ROpYML2JEeuufNV2IwdFUg" name="Process">
       <sca:interface.wsdl xmi:id="_ROqmUL2JEeuufNV2IwdFUg" interface="http://www.example.org/wsdl/1621438201997#wsdl.interface(Process)" scaext:wsdlLocation="../Service%20Descriptors/Process.wsdl"/>
     </sca:service>

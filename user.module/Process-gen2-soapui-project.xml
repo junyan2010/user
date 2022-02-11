@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="84a3975a-cfd4-44b9-b369-e1e833486f7d" activeEnvironment="Default" name="Process_gen2" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="8bdc8f83-97d0-4d9f-8018-abfc7dbb32a6" wsaVersion="NONE" name="SOAPServiceBinding" type="wsdl" bindingName="{http://www.example.org/wsdl/1621438201997}SOAPServiceBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/junya/OneDrive/Documents/Process_gen2.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\junya\OneDrive\Documents\Process_gen2.wsdl"><con:part><con:url>file:\C:\Users\junya\OneDrive\Documents\Process_gen2.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Process" targetNamespace="http://www.example.org/wsdl/1621438201997" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/wsdl/1621438201997" xmlns:tns0="http://www.example.org/user1" xmlns:tns1="http://www.example.org/user2" xmlns:tns2="http://www.example.org/schema/1621438202020" xmlns:tns3="http://www.example.org/user3" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/user1">
+      <xsd:element name="emplist">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="user">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="id" type="xsd:integer"/>
+                  <xsd:element name="firstname" type="xsd:string"/>
+                  <xsd:element name="lastname" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/user2">
+      <xsd:element name="emprequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:integer"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="unqualified" targetNamespace="http://www.example.org/schema/1621438202020" xmlns="http://www.example.org/schema/1621438202020" xmlns:extns1="http://www.example.org/user1" xmlns:extns2="http://www.example.org/user2" xmlns:extns3="http://www.example.org/user3">
+      <xsd:import namespace="http://www.example.org/user3"/>
+      <xsd:import namespace="http://www.example.org/user2"/>
+      <xsd:import namespace="http://www.example.org/user1"/>
+      <xsd:element name="listRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" ref="extns1:emplist"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="detailRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" ref="extns2:emprequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="detailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" ref="extns3:empdetails"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/user3">
+      <xsd:element name="empdetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:integer"/>
+            <xsd:element name="firstname" type="xsd:string"/>
+            <xsd:element name="lastname" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string"/>
+            <xsd:element name="phone" type="xsd:string"/>
+            <xsd:element name="status" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="listRequest">
+    <wsdl:part element="tns2:listRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listResponse">
+    <wsdl:part element="tns2:listResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="detailRequest">
+    <wsdl:part element="tns2:detailRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="detailResponse">
+    <wsdl:part element="tns2:detailResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Process">
+    <wsdl:operation name="list">
+      <wsdl:input message="tns:listRequest" name="listInput"/>
+      <wsdl:output message="tns:listResponse" name="listOutput"/>
+    </wsdl:operation>
+    <wsdl:operation name="detail">
+      <wsdl:input message="tns:detailRequest" name="detailInput"/>
+      <wsdl:output message="tns:detailResponse" name="detailOutput"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SOAPServiceBinding" type="tns:Process">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="list">
+      <soap:operation soapAction="list" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="detail">
+      <soap:operation soapAction="detail" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Process">
+    <wsdl:port binding="tns:SOAPServiceBinding" name="ProcessSOAP">
+      <soap:address location="http://localhost:8080/SOAPServiceBinding/process/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/SOAPServiceBinding/process/</con:endpoint></con:endpoints><con:operation id="ef967db0-c8bd-4a71-86b7-08edc4be3377" isOneWay="false" action="detail" name="detail" bindingOperationName="detail" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b2e4a2ad-a587-4f1b-84df-0d7ea632f9e7" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://junyan-work-pc:8080/SOAPServiceBinding/process/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.example.org/schema/1621438202020" xmlns:user="http://www.example.org/user2">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:detailRequest>\r
+         <!--Optional:-->\r
+         <user:emprequest>\r
+            <user:id>21</user:id>\r
+         </user:emprequest>\r
+      </ns:detailRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="detail"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="0a40ebad-6ce1-4a32-9823-4ba34a2ec802" isOneWay="false" action="list" name="list" bindingOperationName="list" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c8647f2e-0d95-49f3-b52b-0863334c3554" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://junyan-work-pc:8080/SOAPServiceBinding/process/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.example.org/schema/1621438202020">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:listRequest>\r
+         <!--Optional:-->\r
+         <Request>?</Request>\r
+      </ns:listRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="list"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
