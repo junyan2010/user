@@ -930,6 +930,7 @@
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/jms#//JMSReceiverEventSource"/>
                                     <value
+                                    ackMode="TIBCO EMS Explicit Client"
                                     connectionReference="jmsConnection"
                                     destinationName="queue1"
                                     maxSessions="1"
